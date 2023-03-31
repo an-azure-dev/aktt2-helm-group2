@@ -1,0 +1,50 @@
+frontend:
+  labels:
+    app: akkt2-frontend
+
+  deploy:
+    name: akkt2-frontenddeploy
+    replicas: 1
+    containers:
+      name: akkt2-frontend
+      imagePullPolicy: IfNotPresent
+      image: phil4fh/frontservice:tagname
+      ports:
+        containerPort: 80
+        name: httpfront
+
+  service:
+    name: akkt2-frontend-svc
+    type: NodePort
+    labels:
+      app: akkt2-frontend
+    ports:
+      name: port-frontend
+      port: 3000
+      nodePort: 30017
+
+############
+backendleft:
+  labels:
+    app: akkt2-backendleft
+
+  deploy:
+    name: backendleft-deploy
+    replicas: 1
+    containers:
+      name: akkt2-backend
+      imagePullPolicy: IfNotPresent
+      image: phil4fh/leftservice:tagname
+      ports:
+        containerPort: 3000
+        name: httpback-left
+
+  #############
+  service:
+    name: akkt2-backendleft-svcs
+    type: ClusterIP
+    labels:
+      app: akkt2-backendleft
+    ports:
+      name: port-backend
+      port: 3000

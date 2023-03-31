@@ -8,7 +8,7 @@ frontend:
     containers:
       name: akkt2-frontend
       imagePullPolicy: IfNotPresent
-      image: phil4fh/frontservice:tagname
+      image: phil4fh/frontservice:latest
       ports:
         containerPort: 80
         name: httpfront
@@ -34,7 +34,7 @@ backendleft:
     containers:
       name: akkt2-backend
       imagePullPolicy: IfNotPresent
-      image: phil4fh/leftservice:tagname
+      image: phil4fh/leftservice:latest
       ports:
         containerPort: 3000
         name: httpback-left

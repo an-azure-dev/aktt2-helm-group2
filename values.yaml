@@ -9,11 +9,6 @@ frontend:
       name: akkt2-frontend
       imagePullPolicy: IfNotPresent
       image: phil4fh/frontservice:latest
-      env:
-        - name: IPLEFT
-          value: "akkt2-backendleft-svcs"
-        - name: IPRIGHT
-          value: "akkt2-backendright-svcs"
       ports:
         containerPort: 80
         name: httpfront

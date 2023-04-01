@@ -22,3 +22,8 @@ spec:
             - containerPort: {{ .Values.frontend.deploy.containers.ports.containerPort }} 
               name: {{ .Values.frontend.deploy.containers.ports.name }}
               protocol: TCP
+          env: 
+            - name: IPLEFT
+              value: {{Values.backendleft.service.name}}
+            - name: IPRIGHT
+              value: {{Values.backendright.service.name}}

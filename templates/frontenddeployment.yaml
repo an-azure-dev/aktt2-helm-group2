@@ -24,6 +24,6 @@ spec:
               protocol: TCP
           env: 
             - name: IPLEFT
-              value: {{Values.backendleft.service.name}}
+              value: {{ .Values.backendleft.service.name }}
             - name: IPRIGHT
-              value: {{Values.backendright.service.name}}
+              value: {{ .Values.backendright.service.name }}

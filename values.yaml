@@ -9,6 +9,11 @@ frontend:
       name: akkt2-frontend
       imagePullPolicy: IfNotPresent
       image: phil4fh/frontservice:latest
+      env:
+        - name: IPLEFT
+          value: "akkt2-backendleft-svcs"
+        - name: IPRIGHT
+          value: "akkt2-backendright-svcs"
       ports:
         containerPort: 80
         name: httpfront
@@ -39,12 +44,40 @@ backendleft:
         containerPort: 3000
         name: httpback-left
 
-  #############
+
   service:
     name: akkt2-backendleft-svcs
     type: ClusterIP
     labels:
       app: akkt2-backendleft
+    ports:
+      name: port-backend
+      port: 3000
+
+
+
+############
+backendright:
+  labels:
+    app: akkt2-backendright
+
+  deploy:
+    name: backendright-deploy
+    replicas: 1
+    containers:
+      name: akkt2-backend
+      imagePullPolicy: IfNotPresent
+      image: phil4fh/rightservice:latest
+      ports:
+        containerPort: 3000
+        name: httpback-right
+
+
+  service:
+    name: akkt2-backendright-svcs
+    type: ClusterIP
+    labels:
+      app: akkt2-backendright
     ports:
       name: port-backend
       port: 3000

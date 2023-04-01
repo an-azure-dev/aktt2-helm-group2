@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.backendright.service.name }}
+spec:
+  type: {{ .Values.backendright.service.type }}
+  selector:
+    app: {{ .Values.backendright.labels.app }}
+  ports:
+  - name: {{ .Values.backendright.service.ports.name }}
+    port: {{ .Values.backendright.service.ports.port }}
+    protocol: TCP

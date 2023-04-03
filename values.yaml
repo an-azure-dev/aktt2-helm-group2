@@ -39,7 +39,6 @@ backendleft:
         containerPort: 3000
         name: httpback-left
 
-
   service:
     name: akkt2-backendleft-svcs
     type: ClusterIP
@@ -66,7 +65,6 @@ backendright:
       ports:
         containerPort: 3000
         name: httpback-right
-
 
   service:
     name: akkt2-backendright-svcs
